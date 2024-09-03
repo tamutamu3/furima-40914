@@ -29,7 +29,7 @@
 | fee_id              | integer     | null: false |
 | from_id             | integer     | null: false |
 | date_id             | integer     | null: false |
-| price               | string      | null: false |
+| price               | integer     | null: false |
 | user                | references  | null: false, foreign_key: true |
 
 ### Association
@@ -43,7 +43,6 @@
 
 | Column              | Type        | Options     |
 | ------------------- | ----------- | ----------  |
-| history             | string      | null: false |
 | user                | references  | null: false, foreign_key: true |
 | item                | references  | null: false, foreign_key: true |
 
@@ -59,10 +58,10 @@
 | Column              | Type        | Options     |
 | ------------------- | ----------- | ----------  |
 | postcord            | string      | null: false |
-| prefecture          | string      | null: false |
+| prefecture_id       | integer     | null: false |
 | city                | string      | null: false |
 | block               | text        | null: false |
-| building            | text        | null: false |
+| building            | text        |             |
 | phone_number        | string      | null: false |
 | purchase            | references  | null: false, foreign_key: true |
 
