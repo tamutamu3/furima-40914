@@ -28,7 +28,7 @@
 | condition_id        | integer     | null: false |
 | fee_id              | integer     | null: false |
 | prefecture_id       | integer     | null: false |
-| date_id             | integer     | null: false |
+| prepare_id          | integer     | null: false |
 | price               | integer     | null: false |
 | user                | references  | null: false, foreign_key: true |
 
@@ -60,8 +60,8 @@
 | postcord            | string      | null: false |
 | prefecture_id       | integer     | null: false |
 | city                | string      | null: false |
-| block               | text        | null: false |
-| building            | text        |             |
+| block               | string      | null: false |
+| building            | string      |             |
 | phone_number        | string      | null: false |
 | purchase            | references  | null: false, foreign_key: true |
 
