@@ -8,7 +8,7 @@ FactoryBot.define do
     fee_id                { 2 }
     prefecture_id         { 2 }
     prepare_id            { 2 }
-    price                 { Faker::Commerce.price(range: 300..9_999_999, as_string: true) }
+    price                 { Faker::Number.number(range: 300..9_999_999, as_string: true) }
     association :user
   end
 end

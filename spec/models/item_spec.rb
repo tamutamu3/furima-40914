@@ -62,11 +62,15 @@ RSpec.describe Item, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is cheep(minimum is 300yen.)')
       end
-      it 'priceがは9,999,999円以上では登録できない' do
+      it 'priceが9,999,999円以上では登録できない' do
         @item.price = Faker::Commerce.price(min_length: 10_000_000)
         @item.valid?
         expect(@item.errors.full_messages).to include('Price is too expensive(maximum is 9999999 yen.)')
       end
+      it 'priceが半角数字以外では登録できない' do
+        @item.price = "abc123"
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Priceは半角数値のみ入力できます')
     end
   end
 end
