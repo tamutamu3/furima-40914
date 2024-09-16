@@ -11,6 +11,7 @@ class CreateItems < ActiveRecord::Migration[7.0]
       t.integer :prefecture_id, null: false
       t.integer :prepare_id, null: false
       t.integer :price, null: false
+      t.text :image, null: false
     end
   end
 end
