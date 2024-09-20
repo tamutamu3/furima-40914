@@ -9,7 +9,6 @@ class Item < ApplicationRecord
   validates :price, presence: true,
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true, allow_blank: true }
   validate :price_is_numeric
-  validates :image, presence: true
 
   belongs_to :user
   has_one_attached :image
