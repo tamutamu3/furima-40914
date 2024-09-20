@@ -129,7 +129,7 @@
     <ul class='item-lists'>
 
       <% if @item.exists?  %>
-      <% @item.reverse_each do |item| %>
+      <% @item.each do |item| %>
         <li class='list'>
           <%= link_to "#" do %>
            <div class='item-img-content'>
@@ -137,7 +137,7 @@
 
             <%# 商品が売れていればsold outを表示しましょう %>
              <div class='sold-out'>
-               span>Sold Out!!</span>
+               <span>Sold Out!!</span>
              </div>
             <%# //商品が売れていればsold outを表示しましょう %>
 
@@ -147,7 +147,7 @@
               <%= "#{item.item_name}" %>
              </h3>
            <div class='item-price'>
-             <span><%= "#{item.price}" %>円<br><%= "#{item.fee_id}" %></span>
+             <span><%= "#{item.price}" %>円<br><%= "#{item.fee.name}" %></span>
               <div class='star-btn'>
                 <%= image_tag "star.png", class:"star-icon" %>
                 <span class='star-count'>0</span>
