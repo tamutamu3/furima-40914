@@ -23,6 +23,7 @@ class Item < ApplicationRecord
   private
 
   def price_is_numeric
+    return if price.blank?
     return if price.to_s =~ /\A[0-9]+\z/
 
     errors.add(:price, 'must be a valid number')
