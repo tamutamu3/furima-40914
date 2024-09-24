@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :prepare_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :price, presence: true,
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true, allow_blank: true }
-  validate :price_is_numeric
+  validate :price_is_numeric, allow_blank: true
 
   belongs_to :user
   has_one_attached :image
