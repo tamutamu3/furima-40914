@@ -8,7 +8,7 @@ class Item < ApplicationRecord
   validates :prepare_id, numericality: { other_than: 1, message: "can't be blank" }
   validates :price, presence: true,
                     numericality: { greater_than_or_equal_to: 300, less_than_or_equal_to: 9_999_999, only_integer: true, allow_blank: true }
-  validate :price_is_numeric, allow_blank: true
+  validate :price_is_numeric
 
   belongs_to :user
   has_one_attached :image
@@ -23,6 +23,7 @@ class Item < ApplicationRecord
   private
 
   def price_is_numeric
+    return if price.blank?
     return if price.to_s =~ /\A[0-9]+\z/
 
     errors.add(:price, 'must be a valid number')
