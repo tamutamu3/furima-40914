@@ -1,7 +1,7 @@
 class PurchasesController < ApplicationController
   before_action :authenticate_user!
-  before_action :move_to_index
   before_action :set_item
+  before_action :move_to_index, only: [:index, :new]
   before_action :set_purchasesddress, only: [:index, :new]
   def index
     gon.public_key = ENV['PAYJP_PUBLIC_KEY']
@@ -25,7 +25,9 @@ class PurchasesController < ApplicationController
   private
 
   def move_to_index
-    redirect_to root_path unless item.purchase.blank?
+    return unless @item.purchase.present? || @item.user == current_user
+
+    redirect_to root_path
   end
 
   def set_item
