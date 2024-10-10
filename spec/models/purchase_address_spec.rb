@@ -49,7 +49,17 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include('Phone number is invalid.')
       end
-      it 'tokenが空では登録できないこと' do
+      it 'phone_numberが9桁以下だと購入できない' do
+        @purchase_address.phone_number = '0123'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid.')
+      end
+      it 'phone_numberが11桁以上だと購入できない' do
+        @purchase_address.phone_number = '01234567891011'
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include('Phone number is invalid.')
+      end
+      it 'tokenがないと購入できないこと' do
         @purchase_address.token = nil
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Token can't be blank")
