@@ -34,6 +34,11 @@ RSpec.describe PurchaseAddress, type: :model do
         @purchase_address.valid?
         expect(@purchase_address.errors.full_messages).to include("Prefecture can't be blank")
       end
+      it 'cityが空だと保存できないこと' do
+        @purchase_address.city = ''
+        @purchase_address.valid?
+        expect(@purchase_address.errors.full_messages).to include("City can't be blank")
+      end
       it 'blockが空だと保存できないこと' do
         @purchase_address.block = ''
         @purchase_address.valid?
